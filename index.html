@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brite Smile FD</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header id="cs-navigation">
+        <div class="cs-container">
+            <!--Nav Logo-->
+            <a href="" class="cs-logo" aria-label="back to home">
+                <img src="./images/smileLogo.png" alt="logo" width="210" height="29" aria-hidden="true" decoding="async">
+            </a>
+            <!--Navigation List-->
+            <nav class="cs-nav" role="navigation">
+                <!--Mobile Nav Toggle-->
+                <button class="cs-toggle" aria-label="mobile menu toggle">
+                    <div class="cs-box" aria-hidden="true">
+                        <span class="cs-line cs-line1" aria-hidden="true"></span>
+                        <span class="cs-line cs-line2" aria-hidden="true"></span>
+                        <span class="cs-line cs-line3" aria-hidden="true"></span>
+                    </div>
+                </button>
+                <!-- We need a wrapper div so we can set a fixed height on the cs-ul in case the nav list gets too long from too many dropdowns being opened and needs to have an overflow scroll. This wrapper acts as the background so it can go the full height of the screen and not cut off any overflowing nav items while the cs-ul stops short of the bottom of the screen, which keeps all nav items in view no matter how mnay there are-->
+                <div class="cs-ul-wrapper">
+                    <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
+                        <li class="cs-li">
+                            <a href="" class="cs-li-link cs-active">
+                                Home
+                            </a>
+                        </li>
+                        <li class="cs-li">
+                            <a href="" class="cs-li-link">
+                                About
+                            </a>
+                        </li>
+                        <!--Copy and paste this cs-dropdown list item and replace any .cs-li with this cs-dropdown group to make a new dropdown and it will work-->
+                        <li class="cs-li cs-dropdown" tabindex="0">
+                            <span class="cs-li-link">
+                                Services
+                                <img class="cs-drop-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/down-gold.svg" alt="dropdown icon" width="15" height="15" decoding="async" aria-hidden="true">
+                            </span>
+                            <ul class="cs-drop-ul">
+                                <li class="cs-drop-li">
+                                    <a href="" class="cs-li-link cs-drop-link">Highlights</a>
+                                </li>
+                                <li class="cs-drop-li">
+                                    <a href="" class="cs-li-link cs-drop-link">Women's Hair Cuts</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="cs-li">
+                            <a href="" class="cs-li-link">
+                                About Us
+                            </a>
+                        </li>
+                        <li class="cs-li">
+                            <a href="" class="cs-li-link">
+                                About Us
+                            </a>
+                        </li>
+                        <li class="cs-li">
+                            <a href="" class="cs-li-link">
+                                FAQ
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <a href="" class="cs-button-solid cs-nav-button">Contact Us</a>
+
+        </div>
+    </header>
+
+<section id="hero-1250">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h1 id="cs-hero-title">Creating Brighter Smiles Daily, Join Our Family</h1>
+            <p class="cs-hero-text">
+                Transforming smiles for hundreds of families, and with a team of only the best, you can rest easy knowing we will make you want to smile again!
+            </p>
+            <a href="" class="cs-button-solid">Get A Quote</a>
+        </div>
+        <ul class="cs-card-group">
+            <li class="cs-item">
+                <a href="" class="cs-link">
+                    <h3 class="cs-h3">Sustainable System</h3>
+                    <p class="cs-item-text">
+                        We’ve helped thousands of organizations transform to become relevant of helped thousands.
+                    </p>
+                </a>
+                <picture class="cs-item-background">
+                    <source media="(max-width: 600px)" srcset="https://images.pexels.com/photos/3845729/pexels-photo-3845729.jpeg?auto=compress&cs=tinysrgb&w=600">
+                    <source media="(min-width: 601px)" srcset="https://images.pexels.com/photos/3845729/pexels-photo-3845729.jpeg?auto=compress&cs=tinysrgb&w=600">
+                    <img decoding="async" src="https://images.pexels.com/photos/3845729/pexels-photo-3845729.jpeg?auto=compress&cs=tinysrgb&w=600" alt="construction" width="413" height="374" aria-hidden="true">
+                </picture>
+            </li>
+            <li class="cs-item">
+                <a href="" class="cs-link">
+                    <h3 class="cs-h3">Honest Services</h3>
+                    <p class="cs-item-text">
+                        We’ve helped thousands of organizations transform to become relevant of helped thousands.
+                    </p>
+                </a>
+                <picture class="cs-item-background">
+                    <source media="(max-width: 600px)" srcset="https://images.pexels.com/photos/4270362/pexels-photo-4270362.jpeg?auto=compress&cs=tinysrgb&w=600">
+                    <source media="(min-width: 601px)" srcset="https://images.pexels.com/photos/4270362/pexels-photo-4270362.jpeg?auto=compress&cs=tinysrgb&w=600">
+                    <img decoding="async" src="https://images.pexels.com/photos/4270362/pexels-photo-4270362.jpeg?auto=compress&cs=tinysrgb&w=600" alt="construction" width="413" height="374" aria-hidden="true">
+                </picture>
+            </li>
+            <li class="cs-item">
+                <a href="" class="cs-link">
+                    <h3 class="cs-h3">Remodeling Expert</h3>
+                    <p class="cs-item-text">
+                        We’ve helped thousands of organizations transform to become relevant of helped thousands.
+                    </p>
+                </a>
+                <picture class="cs-item-background">
+                    <source media="(max-width: 600px)" srcset="https://images.pexels.com/photos/4270079/pexels-photo-4270079.jpeg?auto=compress&cs=tinysrgb&w=600">
+                    <source media="(min-width: 601px)" srcset="https://images.pexels.com/photos/4270079/pexels-photo-4270079.jpeg?auto=compress&cs=tinysrgb&w=600">
+                    <img decoding="async" src="https://images.pexels.com/photos/4270079/pexels-photo-4270079.jpeg?auto=compress&cs=tinysrgb&w=600" alt="construction" width="413" height="374" aria-hidden="true">
+                </picture>
+            </li>
+            <li class="cs-item">
+                <a href="" class="cs-link">
+                    <h3 class="cs-h3">Remodeling Expert</h3>
+                    <p class="cs-item-text">
+                        We’ve helped thousands of organizations transform to become relevant of helped thousands.
+                    </p>
+                </a>
+                <picture class="cs-item-background">
+                    <source media="(max-width: 600px)" srcset="https://images.pexels.com/photos/6627315/pexels-photo-6627315.jpeg?auto=compress&cs=tinysrgb&w=600">
+                    <source media="(min-width: 601px)" srcset="https://images.pexels.com/photos/6627315/pexels-photo-6627315.jpeg?auto=compress&cs=tinysrgb&w=600">
+                    <img decoding="async" src="https://images.pexels.com/photos/6627315/pexels-photo-6627315.jpeg?auto=compress&cs=tinysrgb&w=600" alt="construction" width="413" height="374" aria-hidden="true">
+                </picture>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Background Image, there's a background image in the CSS for the parallax effect you'll need to change as well if you swap out our images -->
+    <picture class="cs-background">
+        <source media="(max-width: 600px)" srcset="https://images.pexels.com/photos/3663999/pexels-photo-3663999.jpeg?auto=compress&cs=tinysrgb&w=600">
+        <source media="(min-width: 601px)" srcset="https://images.pexels.com/photos/3663999/pexels-photo-3663999.jpeg?auto=compress&cs=tinysrgb&w=600">
+        <img decoding="async" src="https://images.pexels.com/photos/3663999/pexels-photo-3663999.jpeg?auto=compress&cs=tinysrgb&w=600" alt="construction" width="2250" height="1500" aria-hidden="true">
+    </picture>
+</section>
+<div class="spacer-1"></div>
+ <!-- ============================================ -->
+<!--                 Side By Side                 -->
+<!-- ============================================ -->
+
+<section id="sbs-1278">
+    <div class="cs-container">
+        <picture class="cs-picture">
+            <!--Mobile Image-->
+            <source media="(max-width: 600px)" srcset="https://images.pexels.com/photos/5355718/pexels-photo-5355718.jpeg?auto=compress&cs=tinysrgb&w=400">
+            <!--Tablet and above Image-->
+            <source media="(min-width: 601px)" srcset="https://images.pexels.com/photos/5355718/pexels-photo-5355718.jpeg?auto=compress&cs=tinysrgb&w=400">
+            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/5355718/pexels-photo-5355718.jpeg?auto=compress&cs=tinysrgb&w=400" alt="construction" width="738" height="598">
+        </picture>
+        <div class="cs-content">
+            <div class="cs-flex">
+                <span class="cs-topper">Our Company</span>
+                <h2 class="cs-info-title">Get to Know Smile Brite</h2>
+            </div>
+            <p class="cs-info-text">
+                We believe in transparency, constant improvement, and working with the patient's needs. We are here for to provide 100% satisfaction to the customer, and work patiently to get them the smile they want.
+            </p>
+            <a href="" class="cs-button-solid">Learn More</a>
+        </div>
+    </div>
+    <picture class="cs-background">
+        <!--Mobile Image-->
+        <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/white-waves-m.svg">
+        <!--Tablet and above Image-->
+        <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/white-waves.svg">
+        <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/white-waves.svg" alt="waves" width="960" height="839">
+    </picture>
+</section>
+<!-- ============================================ -->
+<!--                    Stats                     -->
+<!-- ============================================ -->
+
+<section id="stats-1230">
+    <div class="cs-container">
+        <div class="cs-content">
+            <span class="cs-topper">YOU'RE IN GOOD HANDS</span>
+            <h2 class="cs-title">1000+ Customers With Brighter Smiles</h2>
+            <p class="cs-text">
+                In this era of dentistry we constantly look to improve our methods to provide the best customer experience and satisfaction. You will be put in only the best care, and will leave with that perfect smile you have been waiting for!
+            </div>
+            <ul class="cs-card-group">
+                <li class="cs-item">
+                    <h3 class="cs-h3">Transparency</h3>
+                </li>
+                <li class="cs-item">
+                    <h3 class="cs-h3">Quality Work</h3>
+                </li>
+                <li class="cs-item">
+                    <h3 class="cs-h3">Improvement</h3>
+                </li>
+                <li class="cs-item">
+                    <h3 class="cs-h3">Family Friendly</h3>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <ul class="cs-stat-group">
+        <li class="cs-stat">
+            <span class="cs-desc">Individual Offices</span>
+            <span class="cs-number">3</span>
+        </li>
+        <li class="cs-stat">
+            <span class="cs-desc">Years of Experiences</span>
+            <span class="cs-number">12+</span>
+        </li>
+        <li class="cs-stat">
+            <span class="cs-desc">Team Members</span>
+            <span class="cs-number">30</span>
+        </li>
+        <li class="cs-stat">
+            <span class="cs-desc">Smiles Transformed</span>
+            <span class="cs-number">1000+</span>
+        </li>
+        <li class="cs-stat">
+            <span class="cs-desc">Dissapointed Customers</span>
+            <span class="cs-number">0</span>
+        </li>
+    </ul>
+</section>
+<!-- ============================================ -->
+<!--                   Reviews                    -->
+<!-- ============================================ -->
+
+<section id="reviews-1395">
+    <div class="cs-container">
+        <div class="cs-content">
+            <span class="cs-topper">Testimonials</span>
+            <h2 class="cs-title">Happy Client’s Feedback About Our Service</h2>
+        </div>
+        <ul class="cs-card-group">
+            <li class="cs-item">
+                <!--Blue Quote-->
+                <img class="cs-quote" aria-hidden="true" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/pink-quotes.svg" decoding="async" alt="quote icon" width="120" height="99">
+                <p class="cs-item-text">
+                    Small businesses are the heartbeat of communities, embodying the spirit of entrepreneurship, determination, and local support. 
+                </p>
+                <div class="cs-flex-group">
+                    <picture class="cs-picture">
+                        <img class="cs-profile" src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/profile2.jpg" decoding="async" alt="profile" width="50" height="50" aria-hidden="true">
+                    </picture>
+                    <span class="cs-name">
+                        Britney Allison
+                        <span class="cs-job">Founder Of Yokoloko</span>
+                    </span>
+                </div>
+            </li>
+            <li class="cs-item">
+                <!--Blue Quote-->
+                <img class="cs-quote" aria-hidden="true" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/pink-quotes.svg" decoding="async" alt="quote icon" width="120" height="99">
+                <p class="cs-item-text">
+                    I want to say a huge thank you to the Stitch team. The guys in a short time and very efficiently helped me with the development of a website for my new startup.
+                </p>
+                <div class="cs-flex-group">
+                    <picture class="cs-picture">
+                        <img class="cs-profile" src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/profile3.png" decoding="async" alt="profile" width="50" height="50" aria-hidden="true">
+                    </picture>
+                    <span class="cs-name">
+                        Jessica Jonson
+                        <span class="cs-job">CTO Of Meriette</span>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- ============================================ -->
+<!--                  Footer                      -->
+<!-- ============================================ -->
+
+<section id="footer-1147">
+    <div class="cs-container">
+        <div class="cs-top">
+            <a aria-label="go back to home" class="cs-logo" href="">
+                <img class="cs-logo-img" loading="lazy" decoding="async" src="./images/smileLogo.png" alt="logo" width="168" height="48">
+            </a>
+            <ul class="cs-ul">
+                <li class="cs-li">
+                    <a href="" class="cs-link">Home</a>
+                </li>
+                <li class="cs-li">
+                    <a href="" class="cs-link">About</a>
+                </li>
+                <li class="cs-li">
+                    <a href="" class="cs-link">Services</a>
+                </li>
+                <li class="cs-li">
+                    <a href="" class="cs-link">Donations</a>
+                </li>
+                <li class="cs-li">
+                    <a href="" class="cs-link">Events</a>
+                </li>
+                <li class="cs-li">
+                    <a href="" class="cs-link">Blog</a>
+                </li>
+                <li class="cs-li">
+                    <a href="" class="cs-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <div class="cs-bottom">
+            <!--Social-->
+            <ul class="cs-social">
+                <li class="cs-social-li">
+                    <a href="" class="cs-social-link" aria-label="facebook" target="_blank" rel="noopener">
+                        <img class="cs-social-icon cs-default" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/facebook-white.svg" alt="icon" loading="lazy" decoding="async" width="12" height="12" aria-hidden="true">
+                    </a>
+                </li>
+                <li class="cs-social-li">
+                    <a href="" class="cs-social-link" aria-label="twitter" target="_blank" rel="noopener">
+                        <img class="cs-social-icon cs-default" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/twitter-white.svg" alt="icon" loading="lazy" decoding="async" width="12" height="12" aria-hidden="true">
+                    </a>
+                </li>
+                <li class="cs-social-li">
+                    <a href="" class="cs-social-link" aria-label="instagram" target="_blank" rel="noopener">
+                        <img class="cs-social-icon cs-default" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-transparent.svg" alt="icon" loading="lazy" decoding="async" width="12" height="12" aria-hidden="true">
+                    </a>
+                </li>
+                <li class="cs-social-li">
+                    <a href="" class="cs-social-link" aria-label="twitter" target="_blank" rel="noopener">
+                        <img class="cs-social-icon cs-default" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/youtube-transparent2.svg" alt="icon" loading="lazy" decoding="async" width="12" height="12" aria-hidden="true">
+                    </a>
+                </li>
+            </ul>
+            <span class="cs-copyright">
+                © Copyright 2023 - <a href="" class="cs-copyright-link">DuskDev</a>
+            </span>
+        </div>
+    </div>
+    <!--Background-->
+    <picture class="cs-background">
+        <!--Mobile Image-->
+        <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/kids2.jpg">
+        <!--Tablet and above Image-->
+        <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/kids2.jpg">
+        <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/kids2.jpg" alt="kids" width="1280" height="568">
+    </picture>
+</section>
+                                                                                                                                                 
+</body>
+<script src="./main.js"></script>
+</html>

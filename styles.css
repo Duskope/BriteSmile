@@ -1,0 +1,1937 @@
+/*-- -------------------------- -->
+<---     Mobile Navigation      -->
+<--- -------------------------- -*/
+
+body, html {
+    /* reset margin and padding so there's no gap between the nav and the screen edges */
+    margin: 0;
+    padding: 0;
+}
+
+/* Mobile - 1023px */
+@media only screen and (max-width: 63.9375rem) {
+  body.cs-open {
+    overflow: hidden;
+  }
+  #cs-navigation {
+    /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+    font-family: 'Roboto', 'Arial', sans-serif;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    /* prevents padding and border from affecting height and width */
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+    position: fixed;
+    z-index: 10000;
+  }
+  #cs-navigation:before {
+    /* black blurred overlay */
+    content: '';
+    width: 0%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    position: absolute;
+    display: block;
+    top: 100%;
+    right: 0;
+    z-index: -11;
+    transition: width .5s, opacity .3s;
+  }
+  #cs-navigation.cs-active:before {
+    width: 100%;
+    opacity: 1;
+  }
+  #cs-navigation.cs-active .cs-toggle {
+    transform: rotate(180deg);
+  }
+  #cs-navigation.cs-active .cs-ul-wrapper {
+    opacity: 1;
+    transform: scaleX(1);
+    transition-delay: .2s;
+  }
+  #cs-navigation.cs-active .cs-li {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  #cs-navigation .cs-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  #cs-navigation .cs-logo {
+    width: 40%;
+    max-width: 9.125rem;
+    height: 100%;
+    margin: 0 auto 0 0;
+    padding: 0;
+    /* prevents padding and border from affecting height and width */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+  #cs-navigation .cs-logo img {
+    width: 100%;
+    height: 100%;
+    /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
+    object-fit: contain;
+    /* places the image to the left edge of the parent */
+    object-position: left;
+  }
+  #cs-navigation .cs-toggle {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0 0 0 auto;
+    border-radius: 0.25rem;
+    background-color: var(--primary);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform .6s;
+  }
+  #cs-navigation .cs-active .cs-line1 {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(225deg);
+  }
+  #cs-navigation .cs-active .cs-line2 {
+    top: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
+  }
+  #cs-navigation .cs-active .cs-line3 {
+    bottom: 100%;
+    opacity: 0;
+  }
+  #cs-navigation .cs-box {
+    /* 24px - 28px */
+    width: clamp(1.5rem, 2vw, 1.75rem);
+    height: 1rem;
+    position: relative;
+  }
+  #cs-navigation .cs-line {
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #FAFBFC;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #cs-navigation .cs-line1 {
+    top: 0;
+    transform-origin: center;
+    transition: transform .5s, top .3S, left .3S;
+    animation-duration: .7s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+  }
+  #cs-navigation .cs-line2 {
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    transition: top .3s, left .3s, transform .5s;
+    animation-duration: .7s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+  }
+  #cs-navigation .cs-line3 {
+    bottom: 0;
+    transition: bottom .3s, opacity .3s;
+  }
+  #cs-navigation .cs-ul-wrapper {
+    min-width: 60vw;
+    height: 100vh;
+    opacity: 0;
+    background-color: #fff;
+    box-shadow: inset rgba(0, 0, 0, 0.2) 0px 8px 24px;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: auto;
+    right: 0;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: top right;
+    transition: transform .4s, opacity .3s;
+  }
+  #cs-navigation .cs-ul {
+    margin: 0;
+    /* 28px - 40px */
+    padding: 3rem clamp(1.75rem, 3vw, 2.5rem) 2rem 4.375rem;
+    width: auto;
+    min-width: 40%;
+    height: 65vh;
+    overflow: scroll;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.25rem;
+  }
+  #cs-navigation .cs-li {
+    text-align: right;
+    list-style: none;
+    width: 100%;
+    margin-right: 0;
+    /* transition from these values */
+    transform: translateX(-2.5rem);
+    opacity: 0;
+    transition: transform .6s, opacity .9s;
+  }
+  #cs-navigation .cs-li:nth-of-type(1) {
+    transition-delay: .05s;
+  }
+  #cs-navigation .cs-li:nth-of-type(2) {
+    transition-delay: .1s;
+  }
+  #cs-navigation .cs-li:nth-of-type(3) {
+    transition-delay: .15s;
+  }
+  #cs-navigation .cs-li:nth-of-type(4) {
+    transition-delay: .2s;
+  }
+  #cs-navigation .cs-li:nth-of-type(5) {
+    transition-delay: .25s;
+  }
+  #cs-navigation .cs-li:nth-of-type(6) {
+    transition-delay: .3s;
+  }
+  #cs-navigation .cs-li:nth-of-type(7) {
+    transition-delay: .35s;
+  }
+  #cs-navigation .cs-li:nth-of-type(8) {
+    transition-delay: .4s;
+  }
+  #cs-navigation .cs-li:nth-of-type(9) {
+    transition-delay: .45s;
+  }
+  #cs-navigation .cs-li-link {
+    /* 16px - 24px */
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    line-height: 1.2em;
+    text-decoration: none;
+    margin: 0;
+    color: var(--headerColor);
+    display: inline-block;
+    position: relative;
+  }
+  #cs-navigation .cs-li-link:before {
+    /* active state underline */
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    opacity: 1;
+    position: absolute;
+    display: none;
+    bottom: -0.125rem;
+    left: 0;
+  }
+  #cs-navigation .cs-li-link.cs-active:before {
+    display: block;
+  }
+  #cs-navigation .cs-button-solid {
+    display: none;
+  }
+}
+
+/*-- -------------------------- -->
+<---     Navigation Dropdown    -->
+<--- -------------------------- -*/
+
+/* Mobile - 1023px */
+@media only screen and (max-width: 63.9375rem) {
+  #cs-navigation .cs-dropdown {
+    position: relative;
+    color: var(--bodyTextColorWhite);
+  }
+  #cs-navigation .cs-dropdown.cs-active .cs-drop-ul {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+    margin: 0.75rem 0 0 0;
+    padding: 1.5rem;
+    transform: scale(1);
+  }
+  #cs-navigation .cs-dropdown.cs-active .cs-drop-link {
+    opacity: 1;
+  }
+  #cs-navigation .cs-dropdown .cs-li-link {
+    position: relative;
+    transition: opacity .3s;
+  }
+  #cs-navigation .cs-drop-icon {
+    width: 0.9375rem;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    right: -1.25rem;
+    transform: translateY(-50%);
+  }
+  #cs-navigation .cs-drop-ul {
+    width: 100%;
+    height: 0;
+    margin: 0;
+    padding: 0 1.5rem 0 1.5rem;
+    box-sizing: border-box;
+    background-color: var(--primary);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+    transform: scale(0);
+    transform-origin: top right;
+    transition: padding .3s, margin .3s, height .3s, opacity .3s, transform .3s, visibility .3s;
+  }
+  #cs-navigation .cs-drop-li {
+    list-style: none;
+    text-align: inherit;
+  }
+  #cs-navigation .cs-li-link.cs-drop-link {
+    /* 14px - 16px */
+    font-size: clamp(0.875rem, 2vw, 1.25rem);
+    color: #fff;
+  }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    .cs-logo {
+        transform: scale(1.7);
+    }
+  #cs-navigation .cs-dropdown {
+    position: relative;
+  }
+  #cs-navigation .cs-dropdown:hover {
+    cursor: pointer;
+  }
+  #cs-navigation .cs-dropdown:hover .cs-drop-ul {
+    transform: scaleY(1);
+    opacity: 1;
+    visibility: visible;
+  }
+  #cs-navigation .cs-dropdown:hover .cs-drop-li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #cs-navigation .cs-drop-icon {
+    width: 0.9375rem;
+    height: auto;
+    display: inline-block;
+  }
+  #cs-navigation .cs-drop-ul {
+    min-width: 12.5rem;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    border-bottom: 5px solid var(--primary);
+    /* if you have 8 or more links in your dropdown nav, uncomment the columns property to make the list into 2 even columns. Change it to 3 or 4 if you need extra columns. Then remove the transition delays on the cs-drop-li so they don't have weird scattered animations */
+    position: absolute;
+    top: 100%;
+    z-index: -100;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform .3s, visibility .3s, opacity .3s;
+  }
+  #cs-navigation .cs-drop-li {
+    list-style: none;
+    font-size: 1rem;
+    text-decoration: none;
+    opacity: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: translateY(-0.625rem);
+    transition: opacity .6s, transform .6s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(1) {
+    transition-delay: .05s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(2) {
+    transition-delay: .1s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(3) {
+    transition-delay: .15s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(4) {
+    transition-delay: .2s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(5) {
+    transition-delay: .25s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(6) {
+    transition-delay: .3s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(7) {
+    transition-delay: .35s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(8) {
+    transition-delay: .4s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(9) {
+    transition-delay: .45s;
+  }
+  #cs-navigation .cs-li-link.cs-drop-link {
+    text-transform: capitalize;
+    white-space: nowrap;
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1.5em;
+    text-decoration: none;
+    padding: 0.75rem;
+    /* prevents padding and border from affecting height and width */
+    box-sizing: border-box;
+    color: white;
+    display: block;
+    transition: color 0.3s, background-color 0.3s;
+  }
+  #cs-navigation .cs-li-link.cs-drop-link:hover {
+    background-color: var(--primary);
+    color: white;
+  }
+  #cs-navigation .cs-li-link.cs-drop-link:before {
+    display: none;
+  }
+}
+
+/*-- -------------------------- -->
+<---     Desktop Navigation     -->
+<--- -------------------------- -*/
+
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  #cs-navigation {
+    /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+    font-family: 'Roboto', 'Arial', sans-serif;
+    width: 100%;
+    padding: 0 1rem;
+    /* prevents padding and border from affecting height and width */
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+    position: fixed;
+    z-index: 10000;
+  }
+  #cs-navigation .cs-container {
+    width: 100%;
+    /* same height as the cs-ul-wrapper */
+    height: 5.8125rem;
+    max-width: 80rem;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+  }
+  #cs-navigation .cs-toggle {
+    display: none;
+  }
+  #cs-navigation .cs-logo {
+    width: 18.4%;
+    max-width: 21.875rem;
+    height: 2rem;
+    /* margin-right auto pushes everything away from it to the right */
+    margin: 0 auto 0 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  #cs-navigation .cs-logo img {
+    width: 100%;
+    height: 100%;
+    /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
+    object-fit: contain;
+  }
+  #cs-navigation .cs-ul-wrapper {
+    /* absolutely positioned to be dead center */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #cs-navigation .cs-ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* 20px - 36px */
+    gap: clamp(1.25rem, 2.6vw, 2.25rem);
+  }
+  #cs-navigation .cs-li {
+    list-style: none;
+    padding: 2.25rem 0;
+    /* prevent flexbox from squishing it */
+    flex: none;
+  }
+  #cs-navigation .cs-li-link {
+    /* 14px - 16px */
+    font-size: clamp(0.875rem, 0.6vw, 1rem);
+    line-height: 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0;
+    color: white;
+    display: block;
+    position: relative;
+    transition: color .3s;
+  }
+  #cs-navigation .cs-li-link:hover {
+    color: var(--primary);
+  }
+  #cs-navigation .cs-li-link.cs-active {
+    color: var(--primary);
+  }
+  #cs-navigation .cs-button-solid {
+    font-size: 1rem;
+    /* 46px - 56px */
+    line-height: clamp(2.875em, 5.5vw, 3.5em);
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+    color: #fff;
+    min-width: 9.375rem;
+    padding: 0 2rem;
+    background-color: var(--primary);
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    /* prevents padding from adding to the width */
+    box-sizing: border-box;
+    transition: color .3s;
+  }
+  #cs-navigation .cs-button-solid:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    background: #fff;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: width .3s;
+  }
+  #cs-navigation .cs-button-solid:hover {
+    color: #1a1a1a;
+  }
+  #cs-navigation .cs-button-solid:hover:before {
+    width: 100%;
+  }
+}
+:root {
+    --primary: #03ab97;
+    --primaryLight: #03ab97;
+    --secondary: #03ab97;
+    --secondaryLight: #03ab97;
+    --headerColor: #1a1a1a;
+    --bodyTextColor: #4e4b66;
+    --bodyTextColorWhite: #eceef0;
+    /* 13px - 16px */
+    --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+    /* 31px - 49px */
+    --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+    --bodyFontSize: 1rem;
+    /* 60px - 100px top and bottom */
+    --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+*, *:before, *:after {
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+}
+.cs-topper {
+    font-size: var(--topperFontSize);
+    line-height: 1.2em;
+    text-transform: uppercase;
+    text-align: inherit;
+    letter-spacing: .1em;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.cs-title {
+    font-size: var(--headerFontSize);
+    font-weight: 900;
+    line-height: 1.2em;
+    text-align: inherit;
+    max-width: 43.75rem;
+    margin: 0 0 1rem 0;
+    color: var(--headerColor);
+    position: relative;
+}
+
+.cs-text {
+    font-size: var(--bodyFontSize);
+    line-height: 1.5em;
+    text-align: inherit;
+    width: 100%;
+    max-width: 40.625rem;
+    margin: 0;
+    color: var(--bodyTextColor);
+}
+/*-- -------------------------- -->
+<---           Hero             -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #hero-1250 {
+        /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+        font-family: 'Roboto', 'Arial', sans-serif;
+        padding: var(--sectionPadding);
+        /* 200px - 300px - leaving extra space for the navigation */
+        padding-top: clamp(12.5rem, 31.95vw, 18.75rem);
+        position: relative;
+        z-index: 10;
+      }
+      #hero-1250 .cs-container {
+        width: 100%;
+        max-width: 90rem;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 6.25rem;
+      }
+      #hero-1250 .cs-content {
+        /* set text align to left if content needs to be left aligned */
+        text-align: center;
+        width: 100%;
+        max-width: 52.875rem;
+        display: flex;
+        flex-direction: column;
+        /* centers content horizontally, set to flex-start to left align */
+        align-items: center;
+      }#hero-1250 .cs-button-solid {
+        font-size: 1rem;
+        /* 46px - 56px */
+        line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+        text-decoration: none;
+        font-weight: 700;
+        min-width: 9.375rem;
+        margin: 0;
+        color: #fff;
+        padding: 0 1.5rem;
+        overflow: hidden;
+        border-radius: 0.25rem;
+        background-color: var(--primary);
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+      }
+      #hero-1250 .cs-button-solid:before {
+        content: '';
+        position: absolute;
+        display: block;
+        height: 100%;
+        width: 0%;
+        background: #000;
+        opacity: 1;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: width .3s;
+      }
+      #hero-1250 .cs-button-solid:hover:before {
+        width: 100%;
+      }
+      #hero-1250 .cs-card-group {
+        /* changes to -150px at tablet */
+        margin: 0 0 -40.875rem 0;
+        padding: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        /* 16px - 20px */
+        gap: clamp(1rem, 2.5vw, 1.25rem);
+      }
+      #hero-1250 .cs-item {
+        width: 100%;
+        text-align: left;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        border-radius: 0.5rem;
+        /* clips background image corners */
+        overflow: hidden;
+        box-shadow: 0px 12px 80px 0px rgba(26, 26, 26, 0.08);
+        /* prevents padding and border from affecting height and width */
+        box-sizing: border-box;
+        grid-column: span 12;
+        grid-row: span 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        position: relative;
+        z-index: 1;
+      }
+      #hero-1250 .cs-item:hover .cs-item-background img {
+        opacity: .4;
+        transform: scale(1.3);
+      }
+      #hero-1250 .cs-item:hover .cs-h3 {
+        color: var(--primary);
+      }
+      #hero-1250 .cs-item:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        /* prevents border from affecting height and width */
+        box-sizing: border-box;
+        border-radius: 0.5rem;
+        /* prevents the mouse from interacting with it so when you hover hover the other elements inside the card it doesn't block your mouse from hovering over them */
+        pointer-events: none;
+        opacity: 1;
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
+      #hero-1250 .cs-link {
+        text-decoration: none;
+        /* 125px - 236px */
+        /* padding goes on the link, not the cs-item as is normal. We do this because we want the whole card to be hoverable. So we add the padding to the link tag to create the space inside the card. By adding the space inside the cs-link tag we can make the whole card hoverable since the padding is now contributing to the height and widht of the link */
+        padding: clamp(7.8125rem, 19vw, 14.75rem) 1.5rem 1.5rem;
+      }
+      #hero-1250 .cs-h3 {
+        /* 20px - 25px */
+        font-size: clamp(1.25rem, 2.5vw, 1.5625rem);
+        line-height: 1.2em;
+        font-weight: bold;
+        text-align: inherit;
+        margin: 0 0 0.75rem 0;
+        color: white;
+        transition: color .3s;
+      }
+      #hero-1250 .cs-item-text {
+        /* 14px - 16px */
+        font-size: clamp(0.875rem, 1.5vw, 1rem);
+        line-height: 1.5em;
+        max-width: 28.125rem;
+        margin: 0;
+        padding: 0;
+        color: white;
+      }
+      #hero-1250 .cs-item-background {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+      #hero-1250 .cs-item-background:before {
+        /* background color overlay */
+        content: '';
+        position: absolute;
+        display: block;
+        height: 100%;
+        width: 100%;
+        background: #1a1a1a;
+        opacity: .24;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+      #hero-1250 .cs-item-background:after {
+        /* background color overlay */
+        content: '';
+        position: absolute;
+        display: block;
+        height: 100%;
+        width: 100%;
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000000 100%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000000 100%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000000 100%);
+        opacity: .40;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+      }
+      #hero-1250 .cs-item-background img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        /* Makes img tag act as a background image */
+        object-fit: cover;
+        transition: transform .6s, opacity .3s;
+      }
+      #hero-1250 .cs-background {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -2;
+      }
+      #hero-1250 .cs-background:before {
+        /* Overlay */
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: #1a1a1a;
+        opacity: .84;
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        /* prevents the cursor from interacting with it */
+        pointer-events: none;
+      }
+      #hero-1250 .cs-background img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        /* makes the top of the image start at the top of the parent */
+        object-position: top;
+      }
+    }
+    /* Tablet - 768px */
+    @media only screen and (min-width: 48rem) {
+      #hero-1250 {
+        padding-bottom: 0;
+      }
+      #hero-1250 .cs-card-group {
+        margin-bottom: -9.375rem;
+      }
+      #hero-1250 .cs-item {
+        grid-column: span 6;
+      }
+    }
+    /* Desktop - 1024px */
+    @media only screen and (min-width: 64rem) {
+      #hero-1250 .cs-item {
+        grid-column: span 3;
+      }
+    }
+    /* Large Desktop Parallax Effect - 100px */
+    @media only screen and (min-width: 100rem) {
+      #hero-1250 .cs-background {
+        background: url("./images/smiles-img1.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        /* creates the parallax effect */
+        background-attachment: fixed;
+      }
+      #hero-1250 .cs-background img {
+        display: none;
+      }
+    }
+    :root {
+        /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+        --primary: #03ab97;
+        --primaryLight: #03ab97;
+        --secondary: #03ab97;
+        --secondaryLight: #03ab97;
+        --headerColor: #1a1a1a;
+        --bodyTextColor: #4e4b66;
+        --bodyTextColorWhite: #fafbfc;
+        /* 13px - 16px */
+        --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+        /* 31px - 49px */
+        --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+        --bodyFontSize: 1rem;
+        /* 60px - 100px top and bottom */
+        --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    *, *:before, *:after {
+        /* prevents padding from affecting height and width */
+        box-sizing: border-box;
+    }
+    .cs-topper {
+        font-size: var(--topperFontSize);
+        line-height: 1.2em;
+        text-transform: uppercase;
+        text-align: inherit;
+        letter-spacing: .1em;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.25rem;
+        display: block;
+    }
+    
+    #cs-hero-title {
+        font-size: var(--headerFontSize);
+        font-weight: 900;
+        line-height: 1.2em;
+        text-align: inherit;
+        max-width: 43.75rem;
+        margin: 0 0 1rem 0;
+        color: white;
+        position: relative;
+    }
+    
+    .cs-hero-text {
+        font-size: var(--bodyFontSize);
+        line-height: 1.5em;
+        text-align: inherit;
+        width: 100%;
+        max-width: 40.625rem;
+        margin: 0;
+        color: white;
+    }
+/*-- -------------------------- -->
+<---        Side By Side        -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    .spacer-1 {
+        height: 90vh;
+    }
+    #sbs-1278 {
+        
+        
+        padding: var(--sectionPadding);
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+      }
+      #sbs-1278 .cs-container {
+        width: 100%;
+        /* changes to 1280px at desktop */
+        max-width: 53.125rem;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        flex-direction: column;
+        /* 48px - 108px */
+        gap: clamp(3rem, 5vw, 6.75rem);
+      }
+      #sbs-1278 .cs-content {
+        /* set text align to left if content needs to be left aligned */
+        text-align: left;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        /* centers content horizontally, set to flex-start to left align */
+        align-items: flex-start;
+      }
+    
+    #sbs-1278 .cs-title {
+        max-width: 20ch;
+      }
+      #sbs-1278 .cs-text {
+        /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
+        margin-bottom: 1rem;
+      }
+      #sbs-1278 .cs-text:last-of-type {
+        margin-bottom: 2rem;
+      }
+      #sbs-1278 .cs-button-solid {
+        font-size: 1rem;
+        /* 46px - 56px */
+        line-height: clamp(2.875em, 5.5vw, 3.5em);
+        text-decoration: none;
+        font-weight: 700;
+        text-align: center;
+        margin: 0;
+        color: #fff;
+        border: none;
+        min-width: 9.375rem;
+        padding: 0 1.5rem;
+        background-color: var(--primary);
+        border-radius: 0.25rem;
+        overflow: hidden;
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        /* prevents padding from adding to the width */
+        box-sizing: border-box;
+        transition: color .3s;
+      }
+      #sbs-1278 .cs-button-solid:before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 0%;
+        background: #000;
+        opacity: 1;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: width .3s;
+      }
+      #sbs-1278 .cs-button-solid:hover {
+        color: #fff;
+      }
+      #sbs-1278 .cs-button-solid:hover:before {
+        width: 100%;
+      }
+      #sbs-1278 .cs-picture {
+        width: 100%;
+        /* 456px - 598px */
+        height: clamp(28.5rem, 46vw, 37.375rem);
+        border-radius: 1.25rem;
+        overflow: hidden;
+        display: block;
+        /* sends it to the bottom in the 2nd position */
+        order: 2;
+        position: relative;
+        z-index: 1;
+      }
+      #sbs-1278 .cs-picture:before {
+        /* black overlay */
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: #1a1a1a;
+        opacity: .3;
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+      #sbs-1278 .cs-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      #sbs-1278 .cs-background {
+        width: 100%;
+        height: 50%;
+        background-color: #1a1a1a;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+      }
+      #sbs-1278 .cs-background img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+    /* Tablet - 768px */
+    @media only screen and (min-width: 48rem) {
+        .spacer-1 {
+            height: 10vh;
+        }
+      #sbs-1278 .cs-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 2rem;
+      }
+      #sbs-1278 .cs-flex {
+        width: 45%;
+      }
+      #sbs-1278 .cs-title {
+        margin: 0;
+      }
+      #sbs-1278 .cs-text {
+        width: 50%;
+      }
+      #sbs-1278 .cs-button-solid {
+        margin-right: auto;
+      }
+    }
+    /* Desktop - 1024px */
+    @media only screen and (min-width: 64rem) {
+        .spacer-1 {
+            height: 20vh;
+        }
+      #sbs-1278 {
+        /* moved padding back to the section container */
+        padding: var(--sectionPadding);
+      }
+      #sbs-1278 .cs-container {
+        max-width: 80rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      #sbs-1278 .cs-content {
+        width: 100%;
+        max-width: 27.0625rem;
+        margin: 0;
+        flex-direction: column;
+        order: 2;
+        row-gap: 0;
+      }
+      #sbs-1278 .cs-flex {
+        width: 100%;
+      }
+      #sbs-1278 .cs-title {
+        margin: 0 0 1rem 0;
+        color: var(--headerColor);
+      }
+      #sbs-1278 .cs-text {
+        width: 100%;
+      }
+      #sbs-1278 .cs-picture {
+        max-width: 46.125rem;
+        order: 1;
+      }
+      #sbs-1278 .cs-background {
+        width: 60vw;
+        height: 100%;
+        /* 172px - 336px */
+        margin-right: clamp(11.125rem, 30vw, 21rem);
+        left: auto;
+        right: 50%;
+        top: 0;
+      }
+    }
+    :root {
+        /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+        --primary: #03ab97;
+        --primaryLight: #03ab97;
+        --secondary: #03ab97;
+        --secondaryLight: #03ab97;
+        --headerColor: #1a1a1a;
+        --bodyTextColor: #4e4b66;
+        --bodyTextColorWhite: #fafbfc;
+        /* 13px - 16px */
+        --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+        /* 31px - 49px */
+        --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+        --bodyFontSize: 1rem;
+        /* 60px - 100px top and bottom */
+        --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    *, *:before, *:after {
+        /* prevents padding from affecting height and width */
+        box-sizing: border-box;
+    }
+    .cs-topper {
+        font-size: var(--topperFontSize);
+        line-height: 1.2em;
+        text-transform: uppercase;
+        text-align: inherit;
+        letter-spacing: .1em;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.25rem;
+        display: block;
+    }
+    
+    .cs-hero-title {
+        font-size: var(--headerFontSize);
+        font-weight: 900;
+        line-height: 1.2em;
+        text-align: inherit;
+        max-width: 43.75rem;
+        margin: 0 0 1rem 0;
+        color: var(--headerColor);
+        position: relative;
+    }
+    
+    .cs-text {
+        font-size: var(--bodyFontSize);
+        line-height: 1.5em;
+        text-align: inherit;
+        width: 100%;
+        max-width: 40.625rem;
+        margin: 0;
+        color: var(--bodyTextColor);
+    }
+/*-- -------------------------- -->
+<---           Stats            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+
+    #stats-1230 {
+        
+        font-family: "Roboto", "Arial", sans-serif;
+        padding: var(--sectionPadding);
+        background-color: #1a1a1a;
+        position: relative;
+        z-index: 1;
+      }
+      #stats-1230:before {
+        content: '';
+        position: absolute;
+        display: block;
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        background-size: auto;
+        background-repeat: repeat;
+        opacity: .6;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+      #stats-1230 .cs-container {
+        /* changes to 1280px at desktop */
+        max-width: 36.5rem;
+        width: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* 48px - 64px */
+        gap: clamp(3rem, 6vw, 4rem);
+      }
+      #stats-1230 .cs-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+      }
+      #stats-1230 .cs-flex {
+        /* set text align to left if content needs to be left aligned */
+        text-align: left;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        /* centers content horizontally, set to flex-start to left align */
+        align-items: flex-start;
+      }
+    
+    #stats-1230 .cs-title {
+        /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
+        max-width: 20ch;
+        color: white;
+      }
+      #stats-1230 .cs-text {
+        /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
+        opacity: .8;
+        color: white;
+      }
+      #stats-1230 .cs-card-group {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        /* 16px - 20px */
+        gap: clamp(1rem, 2vw, 1.25rem);
+      }
+      #stats-1230 .cs-item {
+        list-style: none;
+        width: 100%;
+        /* prevents padding and border from affecting height and width */
+        /* 16px - 40px top & bottom */
+        /* 16px - 32px left & right */
+        padding: clamp(1rem, 3vw, 2.5rem) clamp(1rem, 2.5vw, 2rem);
+        box-sizing: border-box;
+        background: #282828;
+        border: 1px solid #3A3A3A;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        gap: 0.75rem;
+        /* clips cs-icon overflowing */
+        overflow: hidden;
+        grid-column: span 6;
+      }
+      #stats-1230 .cs-icon {
+        /* 32px - 40px */
+        width: clamp(2rem, 3vw, 2.5rem);
+        height: auto;
+        margin: 0;
+        flex: none;
+      }
+      #stats-1230 .cs-h3 {
+        /* 16px - 25px */
+        font-size: clamp(1rem, 2vw, 1.5625rem);
+        line-height: 1.2em;
+        font-weight: 900;
+        width: 100%;
+        margin: 0;
+        color: white;
+        /* wraps longer words on the smallest screen sizes */
+        overflow-wrap: break-word;
+      }
+      #stats-1230 .cs-stat-group {
+        width: 100%;
+        margin: auto;
+        padding: 0;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: repeat(6, 1fr);
+      }
+      #stats-1230 .cs-stat {
+        list-style: none;
+        margin: 0;
+        /* 16px - 40px */
+        padding: clamp(1rem, 3vw, 2.5rem) 1rem;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        grid-column: span 2;
+        /* border code */
+        /* remove the border on the far-right elements */
+        /* makes the last two items span across multiple columns. changes at desktop to one line */
+      }
+      #stats-1230 .cs-stat:before {
+        content: "";
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(72, 72, 72, 0) 0%, #484848 50%, rgba(72, 72, 72, 0) 100%);
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      #stats-1230 .cs-stat:nth-of-type(3):before,
+      #stats-1230 .cs-stat:nth-of-type(5):before {
+        content: none;
+      }
+      #stats-1230 .cs-stat:nth-of-type(4),
+      #stats-1230 .cs-stat:nth-of-type(5) {
+        grid-column: span 3;
+      }
+      #stats-1230 .cs-desc {
+        font-size: var(--bodyFontSize);
+        line-height: 1.5em;
+        text-align: center;
+        /* keeps the width of the stat description from overflowing onto the border */
+        /* 88px - 176px */
+        width: clamp(5.5rem, 20vw, 11rem);
+        margin-bottom: 0.5rem;
+        color: white;
+        opacity: .8;
+        display: block;
+      }
+      #stats-1230 .cs-number {
+        /* 25px - 49px */
+        font-size: clamp(1.5625rem, 3vw, 3.0625rem);
+        line-height: 1.2em;
+        font-weight: 900;
+        margin: 0;
+        color: white;
+        display: block;
+      }
+    }
+    /* Tablet - 650px */
+    @media only screen and (min-width: 40.625rem) {
+      #stats-1230 .cs-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      #stats-1230 .cs-card-group {
+        display: grid;
+        /* makes all grid items stretch to have the same height if their content isn't all the same height */
+        align-items: stretch;
+        grid-template-columns: repeat(2, 1fr);
+      }
+      #stats-1230 .cs-item {
+        grid-column: span 1;
+        flex-direction: row;
+        align-items: center;
+      }
+      #stats-1230 .cs-stat-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+    /* Small Desktop - 1024px */
+    @media only screen and (min-width: 64rem) {
+      #stats-1230 .cs-container {
+        max-width: 80rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      #stats-1230 .cs-content {
+        flex-direction: row;
+        align-items: center;
+      }
+      #stats-1230 .cs-title,
+      #stats-1230 .cs-text {
+        max-width: none;
+      }
+      #stats-1230 .cs-card-group {
+        width: 50%;
+        /* prevents flexbox from squishing it */
+        flex: none;
+      }
+      #stats-1230 .cs-stat-group {
+        max-width: 80rem;
+        grid-template-columns: repeat(5, 1fr);
+      }
+      #stats-1230 .cs-stat {
+        grid-column: span 1;
+      }
+      #stats-1230 .cs-stat:nth-of-type(4),
+      #stats-1230 .cs-stat:nth-of-type(5) {
+        grid-column: span 1;
+      }
+      #stats-1230 .cs-stat:nth-of-type(3):before {
+        content: "";
+      }
+    }
+    :root {
+        /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+        --primary: #03ab97;
+        --primaryLight: #03ab97;
+        --secondary: #03ab97;
+        --secondaryLight: #03ab97;
+        --headerColor: #1a1a1a;
+        --bodyTextColor: #4e4b66;
+        --bodyTextColorWhite: #fafbfc;
+        /* 13px - 16px */
+        --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+        /* 31px - 49px */
+        --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+        --bodyFontSize: 1rem;
+        /* 60px - 100px top and bottom */
+        --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    *, *:before, *:after {
+        /* prevents padding from affecting height and width */
+        box-sizing: border-box;
+    }
+    .cs-topper {
+        font-size: var(--topperFontSize);
+        line-height: 1.2em;
+        text-transform: uppercase;
+        text-align: inherit;
+        letter-spacing: .1em;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.25rem;
+        display: block;
+    }
+    
+    .cs-title {
+        font-size: var(--headerFontSize);
+        font-weight: 900;
+        line-height: 1.2em;
+        text-align: inherit;
+        max-width: 43.75rem;
+        margin: 0 0 1rem 0;
+        color: var(--headerColor);
+        position: relative;
+    }
+    
+    .cs-text {
+        font-size: var(--bodyFontSize);
+        line-height: 1.5em;
+        text-align: inherit;
+        width: 100%;
+        max-width: 40.625rem;
+        margin: 0;
+        color: var(--bodyTextColor);
+    }
+/*-- -------------------------- -->
+<---          Reviews           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  
+    #reviews-1395 {
+      
+      
+      /* centers the button */
+      text-align: center;
+      padding: var(--sectionPadding);
+      /* clips the orbs from causing overflow issues */
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    #reviews-1395 .cs-container {
+      width: 100%;
+      /* changes to 1024px at tablet */
+      max-width: 36.5rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 48px - 64px */
+      gap: clamp(3rem, 6vw, 4rem);
+    }
+    #reviews-1395 .cs-content {
+      /* set text align to left if content needs to be left aligned */
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      /* centers content horizontally, set to flex-start to left align */
+      align-items: center;
+    }
+    
+    
+    #reviews-1395 .cs-title {
+      max-width: 20ch;
+      margin: 0;
+    }
+    #reviews-1395 .cs-card-group {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      /* 16px - 20px */
+      gap: clamp(1rem, 2.5vw, 1.15rem);
+    }
+    #reviews-1395 .cs-item {
+      list-style: none;
+      text-align: left;
+      /* 20px - 60px */
+      padding: clamp(1rem, 4vw, 3.75rem);
+      background-color: #fff;
+      /* 12px - 24px */
+      border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
+      /* prevents padding from adding to height and width */
+      box-sizing: border-box;
+      /* clips the pseudo box from overflowing */
+      overflow: hidden;
+      display: flex;
+      grid-column: span 12;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+    #reviews-1395 .cs-item:before {
+      /* background color */
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: var(--primary);
+      opacity: .05;
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      /* prevents the mouse from interacting it */
+      pointer-events: none;
+    }
+    #reviews-1395 .cs-quote {
+      /* 72px - 120px */
+      width: clamp(4.5rem, 10vw, 7.5rem);
+      height: auto;
+      /* 32px - 64px */
+      margin-bottom: clamp(2rem, 6vw, 4rem);
+      display: block;
+    }
+    #reviews-1395 .cs-item-text {
+      /* 16px - 25px */
+      font-size: clamp(1rem, 2.6vw, 1.5625rem);
+      line-height: 1.2em;
+      font-weight: bold;
+      margin: 0;
+      /* 24px - 64px */
+      margin-bottom: clamp(1.5rem, 6vw, 4rem);
+      color: var(--bodyTextColor);
+    }
+    #reviews-1395 .cs-flex-group {
+      /* in case one card has more text than the other, this pushes up against the review text so the name and title are always at the bottom. Only works if parent is a flexbox */
+      margin-top: auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      /* 8px - 24px */
+      gap: clamp(0.8rem, 1.5vw, 1rem);
+    }
+    #reviews-1395 .cs-profile {
+      /* 40px - 52px */
+      width: clamp(2.5rem, 5vw, 3.25rem);
+      height: clamp(2.5rem, 5vw, 3.25rem);
+      margin: 0;
+      border-radius: 50%;
+      box-sizing: border-box;
+      border: 2px solid #fff;
+      /* clips image corners to make circle */
+      overflow: hidden;
+      position: relative;
+      display: block;
+    }
+    #reviews-1395 .cs-profile img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      /* makes the image behave like a background image */
+      object-fit: cover;
+    }
+    #reviews-1395 .cs-name {
+      /* 16px - 25px */
+      font-size: clamp(1rem, 2.5vw, 1.5625rem);
+      line-height: 1.2em;
+      font-weight: 700;
+      margin: 0;
+      color: var(--headerColor);
+      display: block;
+    }
+    #reviews-1395 .cs-job {
+      /* 14px - 16px */
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      line-height: 1.5em;
+      font-weight: 400;
+      margin: 0;
+      color: #746F95;
+      display: block;
+    }
+  }
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #reviews-1395 .cs-container {
+      max-width: 80rem;
+    }
+    #reviews-1395 .cs-item {
+      grid-column: span 6;
+    }
+  }
+  :root {
+    /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+    --primary: #03ab97;
+    --primaryLight: #03ab97;
+    --secondary: #03ab97;
+    --secondaryLight: #03ab97;
+    --headerColor: #1a1a1a;
+    --bodyTextColor: #4e4b66;
+    --bodyTextColorWhite: #fafbfc;
+    /* 13px - 16px */
+    --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+    /* 31px - 49px */
+    --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+    --bodyFontSize: 1rem;
+    /* 60px - 100px top and bottom */
+    --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+*, *:before, *:after {
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+}
+.cs-topper {
+    font-size: var(--topperFontSize);
+    line-height: 1.2em;
+    text-transform: uppercase;
+    text-align: inherit;
+    letter-spacing: .1em;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.cs-title {
+    font-size: var(--headerFontSize);
+    font-weight: 900;
+    line-height: 1.2em;
+    text-align: inherit;
+    max-width: 43.75rem;
+    margin: 0 0 1rem 0;
+    color: var(--headerColor);
+    position: relative;
+}
+
+.cs-text {
+    font-size: var(--bodyFontSize);
+    line-height: 1.5em;
+    text-align: inherit;
+    width: 100%;
+    max-width: 40.625rem;
+    margin: 0;
+    color: var(--bodyTextColor);
+}
+/*-- -------------------------- -->
+<---          Footer            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  
+    #footer-1147 {
+      
+      
+      padding: var(--sectionPadding);
+      position: relative;
+      z-index: 1;
+    }
+    #footer-1147 .cs-container {
+      width: 100%;
+      max-width: 80rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #footer-1147 .cs-top {
+      width: 100%;
+      /* 32px - 40px */
+      margin-bottom: clamp(2rem, 4vw, 2.5rem);
+      padding-bottom: clamp(2rem, 4vw, 2.5rem);
+      border-bottom: 1px solid #484848;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    #footer-1147 .cs-ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      row-gap: 0.5rem;
+      /* 28px - 40px */
+      column-gap: clamp(1.75rem, 4vw, 2.5rem);
+    }
+    #footer-1147 .cs-li {
+      list-style: none;
+    }
+    #footer-1147 .cs-link {
+      /* 14px - 16px */
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      line-height: 1.5em;
+      text-decoration: none;
+      margin: 0;
+      color: #BABABA;
+      display: block;
+      transition: color .3s;
+    }
+    #footer-1147 .cs-link:hover {
+      color: var(--secondary);
+    }
+    #footer-1147 .cs-logo {
+      width: 10.5rem;
+      height: auto;
+      display: block;
+    }
+    #footer-1147 .cs-logo-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    #footer-1147 .cs-bottom {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    #footer-1147 .cs-social {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #footer-1147 .cs-social-li {
+      list-style: none;
+    }
+    #footer-1147 .cs-social-link {
+      width: 2rem;
+      height: 2rem;
+      background-color: #484848;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+    #footer-1147 .cs-social-link:hover {
+      background-color: var(--secondary);
+    }
+    #footer-1147 .cs-social-link:hover .cs-social-icon {
+      filter: grayscale(1) brightness(0);
+      opacity: 1;
+    }
+    #footer-1147 .cs-social-icon {
+      width: 0.75rem;
+      height: auto;
+      display: block;
+      opacity: .5;
+    }
+    #footer-1147 .cs-copyright {
+      font-size: 1rem;
+      line-height: 1.5em;
+      margin: 0;
+      color: #BABABA;
+      display: block;
+    }
+    #footer-1147 .cs-copyright-link {
+      font-size: inherit;
+      text-decoration: none;
+      color: inherit;
+      transition: color .3s;
+    }
+    #footer-1147 .cs-copyright-link:hover {
+      color: var(--secondary);
+    }
+    #footer-1147 .cs-background {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    #footer-1147 .cs-background:before {
+      /* background color overlay */
+      content: '';
+      position: absolute;
+      display: block;
+      height: 100%;
+      width: 100%;
+      background: #1a1a1a;
+      opacity: .96;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    #footer-1147 .cs-background img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      /* Makes img tag act as a background image */
+      object-fit: cover;
+    }
+  }
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #footer-1147 .cs-top {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    #footer-1147 .cs-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  :root {
+    /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+    --primary: #03ab97;
+    --primaryLight: #03ab97;
+    --secondary: #03ab97;
+    --secondaryLight: #03ab97;
+    --headerColor: #1a1a1a;
+    --bodyTextColor: #4e4b66;
+    --bodyTextColorWhite: #fafbfc;
+    /* 13px - 16px */
+    --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+    /* 31px - 49px */
+    --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+    --bodyFontSize: 1rem;
+    /* 60px - 100px top and bottom */
+    --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+*, *:before, *:after {
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+}
+.cs-topper {
+    font-size: var(--topperFontSize);
+    line-height: 1.2em;
+    text-transform: uppercase;
+    text-align: inherit;
+    letter-spacing: .1em;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.cs-title {
+    font-size: var(--headerFontSize);
+    font-weight: 900;
+    line-height: 1.2em;
+    text-align: inherit;
+    max-width: 43.75rem;
+    margin: 0 0 1rem 0;
+    color: var(--headerColor);
+    position: relative;
+}
+
+.cs-text {
+    font-size: var(--bodyFontSize);
+    line-height: 1.5em;
+    text-align: inherit;
+    width: 100%;
+    max-width: 40.625rem;
+    margin: 0;
+    color: var(--bodyTextColor);
+}
+                                                                                                                                                                                                                                                                                                                                                      
