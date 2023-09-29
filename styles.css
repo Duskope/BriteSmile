@@ -1,9 +1,87 @@
+:root {
+  /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+  --primary: #03ab97;
+  --primaryLight: #03ab97;
+  --secondary: #03ab97;
+  --secondaryLight: #03ab97;
+  --headerColor: #1a1a1a;
+  --bodyTextColor: #4e4b66;
+  --bodyTextColorWhite: #fafbfc;
+  /* 13px - 16px */
+  --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+  /* 31px - 49px */
+  --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+  --bodyFontSize: 1rem;
+  /* 60px - 100px top and bottom */
+  --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+.cs-topper {
+  font-size: var(--topperFontSize);
+  line-height: 1.2em;
+  text-transform: uppercase;
+  text-align: inherit;
+  letter-spacing: .1em;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.cs-title {
+  font-size: var(--headerFontSize);
+  font-weight: 900;
+  line-height: 1.2em;
+  text-align: inherit;
+  max-width: 43.75rem;
+  margin: 0 0 1rem 0;
+  color: var(--headerColor);
+  position: relative;
+}
+
+.cs-text {
+  font-size: var(--bodyFontSize);
+  line-height: 1.5em;
+  text-align: inherit;
+  width: 100%;
+  max-width: 40.625rem;
+  margin: 0;
+  color: var(--bodyTextColor);
+}
+#cs-hero-title {
+  font-size: var(--headerFontSize);
+  font-weight: 900;
+  line-height: 1.2em;
+  text-align: inherit;
+  max-width: 43.75rem;
+  margin: 0 0 1rem 0;
+  color: white;
+  position: relative;
+}
+
+.cs-hero-text {
+  font-size: var(--bodyFontSize);
+  line-height: 1.5em;
+  text-align: inherit;
+  width: 100%;
+  max-width: 40.625rem;
+  margin: 0;
+  color: white;
+}
+
 /*-- -------------------------- -->
 <---     Mobile Navigation      -->
 <--- -------------------------- -*/
 
 body, html {
-    /* reset margin and padding so there's no gap between the nav and the screen edges */
     margin: 0;
     padding: 0;
 }
@@ -14,18 +92,15 @@ body, html {
     overflow: hidden;
   }
   #cs-navigation {
-    /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
     font-family: 'Roboto', 'Arial', sans-serif;
     width: 100%;
     padding: 0.75rem 1rem;
-    /* prevents padding and border from affecting height and width */
     box-sizing: border-box;
     background-color: #1a1a1a;
     position: fixed;
     z-index: 10000;
   }
   #cs-navigation:before {
-    /* black blurred overlay */
     content: '';
     width: 0%;
     height: 100vh;
@@ -68,7 +143,6 @@ body, html {
     height: 100%;
     margin: 0 auto 0 0;
     padding: 0;
-    /* prevents padding and border from affecting height and width */
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -78,9 +152,7 @@ body, html {
   #cs-navigation .cs-logo img {
     width: 100%;
     height: 100%;
-    /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
     object-fit: contain;
-    /* places the image to the left edge of the parent */
     object-position: left;
   }
   #cs-navigation .cs-toggle {
@@ -180,7 +252,6 @@ body, html {
     list-style: none;
     width: 100%;
     margin-right: 0;
-    /* transition from these values */
     transform: translateX(-2.5rem);
     opacity: 0;
     transition: transform .6s, opacity .9s;
@@ -223,7 +294,6 @@ body, html {
     position: relative;
   }
   #cs-navigation .cs-li-link:before {
-    /* active state underline */
     content: '';
     width: 100%;
     height: 1px;
@@ -241,7 +311,6 @@ body, html {
     display: none;
   }
 }
-
 /*-- -------------------------- -->
 <---     Navigation Dropdown    -->
 <--- -------------------------- -*/
@@ -338,7 +407,6 @@ body, html {
     opacity: 0;
     visibility: hidden;
     border-bottom: 5px solid var(--primary);
-    /* if you have 8 or more links in your dropdown nav, uncomment the columns property to make the list into 2 even columns. Change it to 3 or 4 if you need extra columns. Then remove the transition delays on the cs-drop-li so they don't have weird scattered animations */
     position: absolute;
     top: 100%;
     z-index: -100;
@@ -392,7 +460,6 @@ body, html {
     line-height: 1.5em;
     text-decoration: none;
     padding: 0.75rem;
-    /* prevents padding and border from affecting height and width */
     box-sizing: border-box;
     color: white;
     display: block;
@@ -406,7 +473,6 @@ body, html {
     display: none;
   }
 }
-
 /*-- -------------------------- -->
 <---     Desktop Navigation     -->
 <--- -------------------------- -*/
@@ -414,11 +480,9 @@ body, html {
 /* Small Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
   #cs-navigation {
-    /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
     font-family: 'Roboto', 'Arial', sans-serif;
     width: 100%;
     padding: 0 1rem;
-    /* prevents padding and border from affecting height and width */
     box-sizing: border-box;
     background-color: #1a1a1a;
     position: fixed;
@@ -426,7 +490,6 @@ body, html {
   }
   #cs-navigation .cs-container {
     width: 100%;
-    /* same height as the cs-ul-wrapper */
     height: 5.8125rem;
     max-width: 80rem;
     margin: auto;
@@ -443,7 +506,6 @@ body, html {
     width: 18.4%;
     max-width: 21.875rem;
     height: 2rem;
-    /* margin-right auto pushes everything away from it to the right */
     margin: 0 auto 0 0;
     padding: 0;
     display: flex;
@@ -454,11 +516,9 @@ body, html {
   #cs-navigation .cs-logo img {
     width: 100%;
     height: 100%;
-    /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
     object-fit: contain;
   }
   #cs-navigation .cs-ul-wrapper {
-    /* absolutely positioned to be dead center */
     position: absolute;
     left: 50%;
     top: 50%;
@@ -477,7 +537,6 @@ body, html {
   #cs-navigation .cs-li {
     list-style: none;
     padding: 2.25rem 0;
-    /* prevent flexbox from squishing it */
     flex: none;
   }
   #cs-navigation .cs-li-link {
@@ -513,7 +572,6 @@ body, html {
     display: inline-block;
     position: relative;
     z-index: 1;
-    /* prevents padding from adding to the width */
     box-sizing: border-box;
     transition: color .3s;
   }
@@ -559,7 +617,6 @@ body {
 }
 
 *, *:before, *:after {
-    /* prevents padding from affecting height and width */
     box-sizing: border-box;
 }
 .cs-topper {
@@ -601,10 +658,8 @@ body {
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
     #hero-1250 {
-        /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
         font-family: 'Roboto', 'Arial', sans-serif;
         padding: var(--sectionPadding);
-        /* 200px - 300px - leaving extra space for the navigation */
         padding-top: clamp(12.5rem, 31.95vw, 18.75rem);
         position: relative;
         z-index: 10;
@@ -620,13 +675,11 @@ body {
         gap: 6.25rem;
       }
       #hero-1250 .cs-content {
-        /* set text align to left if content needs to be left aligned */
         text-align: center;
         width: 100%;
         max-width: 52.875rem;
         display: flex;
         flex-direction: column;
-        /* centers content horizontally, set to flex-start to left align */
         align-items: center;
       }#hero-1250 .cs-button-solid {
         font-size: 1rem;
@@ -662,7 +715,6 @@ body {
         width: 100%;
       }
       #hero-1250 .cs-card-group {
-        /* changes to -150px at tablet */
         margin: 0 0 -40.875rem 0;
         padding: 0;
         width: 100%;
@@ -679,10 +731,8 @@ body {
         padding: 0;
         background-color: #000;
         border-radius: 0.5rem;
-        /* clips background image corners */
         overflow: hidden;
         box-shadow: 0px 12px 80px 0px rgba(26, 26, 26, 0.08);
-        /* prevents padding and border from affecting height and width */
         box-sizing: border-box;
         grid-column: span 12;
         grid-row: span 1;
@@ -705,10 +755,8 @@ body {
         width: 100%;
         height: 100%;
         border: 1px solid rgba(255, 255, 255, 0.4);
-        /* prevents border from affecting height and width */
         box-sizing: border-box;
         border-radius: 0.5rem;
-        /* prevents the mouse from interacting with it so when you hover hover the other elements inside the card it doesn't block your mouse from hovering over them */
         pointer-events: none;
         opacity: 1;
         position: absolute;
@@ -720,7 +768,6 @@ body {
       #hero-1250 .cs-link {
         text-decoration: none;
         /* 125px - 236px */
-        /* padding goes on the link, not the cs-item as is normal. We do this because we want the whole card to be hoverable. So we add the padding to the link tag to create the space inside the card. By adding the space inside the cs-link tag we can make the whole card hoverable since the padding is now contributing to the height and widht of the link */
         padding: clamp(7.8125rem, 19vw, 14.75rem) 1.5rem 1.5rem;
       }
       #hero-1250 .cs-h3 {
@@ -752,7 +799,6 @@ body {
         z-index: -1;
       }
       #hero-1250 .cs-item-background:before {
-        /* background color overlay */
         content: '';
         position: absolute;
         display: block;
@@ -765,7 +811,6 @@ body {
         z-index: 1;
       }
       #hero-1250 .cs-item-background:after {
-        /* background color overlay */
         content: '';
         position: absolute;
         display: block;
@@ -787,7 +832,6 @@ body {
         left: 0;
         height: 100%;
         width: 100%;
-        /* Makes img tag act as a background image */
         object-fit: cover;
         transition: transform .6s, opacity .3s;
       }
@@ -812,7 +856,6 @@ body {
         top: 0;
         left: 0;
         z-index: 1;
-        /* prevents the cursor from interacting with it */
         pointer-events: none;
       }
       #hero-1250 .cs-background img {
@@ -822,7 +865,6 @@ body {
         height: 100%;
         width: 100%;
         object-fit: cover;
-        /* makes the top of the image start at the top of the parent */
         object-position: top;
       }
     }
@@ -858,65 +900,7 @@ body {
         display: none;
       }
     }
-    :root {
-        /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
-        --primary: #03ab97;
-        --primaryLight: #03ab97;
-        --secondary: #03ab97;
-        --secondaryLight: #03ab97;
-        --headerColor: #1a1a1a;
-        --bodyTextColor: #4e4b66;
-        --bodyTextColorWhite: #fafbfc;
-        /* 13px - 16px */
-        --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
-        /* 31px - 49px */
-        --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
-        --bodyFontSize: 1rem;
-        /* 60px - 100px top and bottom */
-        --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
-    }
-    
-    body {
-        margin: 0;
-        padding: 0;
-    }
-    
-    *, *:before, *:after {
-        /* prevents padding from affecting height and width */
-        box-sizing: border-box;
-    }
-    .cs-topper {
-        font-size: var(--topperFontSize);
-        line-height: 1.2em;
-        text-transform: uppercase;
-        text-align: inherit;
-        letter-spacing: .1em;
-        font-weight: 700;
-        color: var(--primary);
-        margin-bottom: 0.25rem;
-        display: block;
-    }
-    
-    #cs-hero-title {
-        font-size: var(--headerFontSize);
-        font-weight: 900;
-        line-height: 1.2em;
-        text-align: inherit;
-        max-width: 43.75rem;
-        margin: 0 0 1rem 0;
-        color: white;
-        position: relative;
-    }
-    
-    .cs-hero-text {
-        font-size: var(--bodyFontSize);
-        line-height: 1.5em;
-        text-align: inherit;
-        width: 100%;
-        max-width: 40.625rem;
-        margin: 0;
-        color: white;
-    }
+
 /*-- -------------------------- -->
 <---        Side By Side        -->
 <--- -------------------------- -*/
@@ -936,7 +920,6 @@ body {
       }
       #sbs-1278 .cs-container {
         width: 100%;
-        /* changes to 1280px at desktop */
         max-width: 53.125rem;
         margin: auto;
         display: flex;
@@ -947,12 +930,10 @@ body {
         gap: clamp(3rem, 5vw, 6.75rem);
       }
       #sbs-1278 .cs-content {
-        /* set text align to left if content needs to be left aligned */
         text-align: left;
         width: 100%;
         display: flex;
         flex-direction: column;
-        /* centers content horizontally, set to flex-start to left align */
         align-items: flex-start;
       }
     
@@ -960,7 +941,6 @@ body {
         max-width: 20ch;
       }
       #sbs-1278 .cs-text {
-        /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
         margin-bottom: 1rem;
       }
       #sbs-1278 .cs-text:last-of-type {
@@ -984,7 +964,6 @@ body {
         display: inline-block;
         position: relative;
         z-index: 1;
-        /* prevents padding from adding to the width */
         box-sizing: border-box;
         transition: color .3s;
       }
@@ -1013,13 +992,11 @@ body {
         border-radius: 1.25rem;
         overflow: hidden;
         display: block;
-        /* sends it to the bottom in the 2nd position */
         order: 2;
         position: relative;
         z-index: 1;
       }
       #sbs-1278 .cs-picture:before {
-        /* black overlay */
         content: '';
         width: 100%;
         height: 100%;
@@ -1088,7 +1065,6 @@ body {
             height: 20vh;
         }
       #sbs-1278 {
-        /* moved padding back to the section container */
         padding: var(--sectionPadding);
       }
       #sbs-1278 .cs-container {
@@ -1129,65 +1105,6 @@ body {
         top: 0;
       }
     }
-    :root {
-        /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
-        --primary: #03ab97;
-        --primaryLight: #03ab97;
-        --secondary: #03ab97;
-        --secondaryLight: #03ab97;
-        --headerColor: #1a1a1a;
-        --bodyTextColor: #4e4b66;
-        --bodyTextColorWhite: #fafbfc;
-        /* 13px - 16px */
-        --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
-        /* 31px - 49px */
-        --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
-        --bodyFontSize: 1rem;
-        /* 60px - 100px top and bottom */
-        --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
-    }
-    
-    body {
-        margin: 0;
-        padding: 0;
-    }
-    
-    *, *:before, *:after {
-        /* prevents padding from affecting height and width */
-        box-sizing: border-box;
-    }
-    .cs-topper {
-        font-size: var(--topperFontSize);
-        line-height: 1.2em;
-        text-transform: uppercase;
-        text-align: inherit;
-        letter-spacing: .1em;
-        font-weight: 700;
-        color: var(--primary);
-        margin-bottom: 0.25rem;
-        display: block;
-    }
-    
-    .cs-hero-title {
-        font-size: var(--headerFontSize);
-        font-weight: 900;
-        line-height: 1.2em;
-        text-align: inherit;
-        max-width: 43.75rem;
-        margin: 0 0 1rem 0;
-        color: var(--headerColor);
-        position: relative;
-    }
-    
-    .cs-text {
-        font-size: var(--bodyFontSize);
-        line-height: 1.5em;
-        text-align: inherit;
-        width: 100%;
-        max-width: 40.625rem;
-        margin: 0;
-        color: var(--bodyTextColor);
-    }
 /*-- -------------------------- -->
 <---           Stats            -->
 <--- -------------------------- -*/
@@ -1218,7 +1135,6 @@ body {
         z-index: -1;
       }
       #stats-1230 .cs-container {
-        /* changes to 1280px at desktop */
         max-width: 36.5rem;
         width: 100%;
         margin: auto;
@@ -1235,22 +1151,18 @@ body {
         gap: 2rem;
       }
       #stats-1230 .cs-flex {
-        /* set text align to left if content needs to be left aligned */
         text-align: left;
         width: 100%;
         display: flex;
         flex-direction: column;
-        /* centers content horizontally, set to flex-start to left align */
         align-items: flex-start;
       }
     
     #stats-1230 .cs-title {
-        /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
         max-width: 20ch;
         color: white;
       }
       #stats-1230 .cs-text {
-        /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
         opacity: .8;
         color: white;
       }
@@ -1266,7 +1178,6 @@ body {
       #stats-1230 .cs-item {
         list-style: none;
         width: 100%;
-        /* prevents padding and border from affecting height and width */
         /* 16px - 40px top & bottom */
         /* 16px - 32px left & right */
         padding: clamp(1rem, 3vw, 2.5rem) clamp(1rem, 2.5vw, 2rem);
@@ -1278,7 +1189,6 @@ body {
         align-items: flex-start;
         position: relative;
         gap: 0.75rem;
-        /* clips cs-icon overflowing */
         overflow: hidden;
         grid-column: span 6;
       }
@@ -1297,7 +1207,6 @@ body {
         width: 100%;
         margin: 0;
         color: white;
-        /* wraps longer words on the smallest screen sizes */
         overflow-wrap: break-word;
       }
       #stats-1230 .cs-stat-group {
@@ -1320,9 +1229,6 @@ body {
         align-items: center;
         position: relative;
         grid-column: span 2;
-        /* border code */
-        /* remove the border on the far-right elements */
-        /* makes the last two items span across multiple columns. changes at desktop to one line */
       }
       #stats-1230 .cs-stat:before {
         content: "";
@@ -1345,7 +1251,6 @@ body {
         font-size: var(--bodyFontSize);
         line-height: 1.5em;
         text-align: center;
-        /* keeps the width of the stat description from overflowing onto the border */
         /* 88px - 176px */
         width: clamp(5.5rem, 20vw, 11rem);
         margin-bottom: 0.5rem;
@@ -1371,7 +1276,6 @@ body {
       }
       #stats-1230 .cs-card-group {
         display: grid;
-        /* makes all grid items stretch to have the same height if their content isn't all the same height */
         align-items: stretch;
         grid-template-columns: repeat(2, 1fr);
       }
@@ -1403,7 +1307,6 @@ body {
       }
       #stats-1230 .cs-card-group {
         width: 50%;
-        /* prevents flexbox from squishing it */
         flex: none;
       }
       #stats-1230 .cs-stat-group {
@@ -1421,65 +1324,6 @@ body {
         content: "";
       }
     }
-    :root {
-        /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
-        --primary: #03ab97;
-        --primaryLight: #03ab97;
-        --secondary: #03ab97;
-        --secondaryLight: #03ab97;
-        --headerColor: #1a1a1a;
-        --bodyTextColor: #4e4b66;
-        --bodyTextColorWhite: #fafbfc;
-        /* 13px - 16px */
-        --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
-        /* 31px - 49px */
-        --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
-        --bodyFontSize: 1rem;
-        /* 60px - 100px top and bottom */
-        --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
-    }
-    
-    body {
-        margin: 0;
-        padding: 0;
-    }
-    
-    *, *:before, *:after {
-        /* prevents padding from affecting height and width */
-        box-sizing: border-box;
-    }
-    .cs-topper {
-        font-size: var(--topperFontSize);
-        line-height: 1.2em;
-        text-transform: uppercase;
-        text-align: inherit;
-        letter-spacing: .1em;
-        font-weight: 700;
-        color: var(--primary);
-        margin-bottom: 0.25rem;
-        display: block;
-    }
-    
-    .cs-title {
-        font-size: var(--headerFontSize);
-        font-weight: 900;
-        line-height: 1.2em;
-        text-align: inherit;
-        max-width: 43.75rem;
-        margin: 0 0 1rem 0;
-        color: var(--headerColor);
-        position: relative;
-    }
-    
-    .cs-text {
-        font-size: var(--bodyFontSize);
-        line-height: 1.5em;
-        text-align: inherit;
-        width: 100%;
-        max-width: 40.625rem;
-        margin: 0;
-        color: var(--bodyTextColor);
-    }
 /*-- -------------------------- -->
 <---          Reviews           -->
 <--- -------------------------- -*/
@@ -1488,12 +1332,8 @@ body {
 @media only screen and (min-width: 0rem) {
   
     #reviews-1395 {
-      
-      
-      /* centers the button */
       text-align: center;
       padding: var(--sectionPadding);
-      /* clips the orbs from causing overflow issues */
       overflow: hidden;
       position: relative;
       z-index: 1;
@@ -1510,12 +1350,10 @@ body {
       gap: clamp(3rem, 6vw, 4rem);
     }
     #reviews-1395 .cs-content {
-      /* set text align to left if content needs to be left aligned */
       text-align: center;
       width: 100%;
       display: flex;
       flex-direction: column;
-      /* centers content horizontally, set to flex-start to left align */
       align-items: center;
     }
     
@@ -1541,9 +1379,7 @@ body {
       background-color: #fff;
       /* 12px - 24px */
       border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
-      /* prevents padding from adding to height and width */
       box-sizing: border-box;
-      /* clips the pseudo box from overflowing */
       overflow: hidden;
       display: flex;
       grid-column: span 12;
@@ -1554,7 +1390,6 @@ body {
       z-index: 1;
     }
     #reviews-1395 .cs-item:before {
-      /* background color */
       content: '';
       width: 100%;
       height: 100%;
@@ -1565,7 +1400,6 @@ body {
       top: 0;
       left: 0;
       z-index: -1;
-      /* prevents the mouse from interacting it */
       pointer-events: none;
     }
     #reviews-1395 .cs-quote {
@@ -1587,7 +1421,6 @@ body {
       color: var(--bodyTextColor);
     }
     #reviews-1395 .cs-flex-group {
-      /* in case one card has more text than the other, this pushes up against the review text so the name and title are always at the bottom. Only works if parent is a flexbox */
       margin-top: auto;
       display: flex;
       justify-content: flex-start;
@@ -1603,7 +1436,6 @@ body {
       border-radius: 50%;
       box-sizing: border-box;
       border: 2px solid #fff;
-      /* clips image corners to make circle */
       overflow: hidden;
       position: relative;
       display: block;
@@ -1614,7 +1446,6 @@ body {
       left: 0;
       height: 100%;
       width: 100%;
-      /* makes the image behave like a background image */
       object-fit: cover;
     }
     #reviews-1395 .cs-name {
@@ -1645,65 +1476,6 @@ body {
       grid-column: span 6;
     }
   }
-  :root {
-    /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
-    --primary: #03ab97;
-    --primaryLight: #03ab97;
-    --secondary: #03ab97;
-    --secondaryLight: #03ab97;
-    --headerColor: #1a1a1a;
-    --bodyTextColor: #4e4b66;
-    --bodyTextColorWhite: #fafbfc;
-    /* 13px - 16px */
-    --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
-    /* 31px - 49px */
-    --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
-    --bodyFontSize: 1rem;
-    /* 60px - 100px top and bottom */
-    --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-}
-
-*, *:before, *:after {
-    /* prevents padding from affecting height and width */
-    box-sizing: border-box;
-}
-.cs-topper {
-    font-size: var(--topperFontSize);
-    line-height: 1.2em;
-    text-transform: uppercase;
-    text-align: inherit;
-    letter-spacing: .1em;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 0.25rem;
-    display: block;
-}
-
-.cs-title {
-    font-size: var(--headerFontSize);
-    font-weight: 900;
-    line-height: 1.2em;
-    text-align: inherit;
-    max-width: 43.75rem;
-    margin: 0 0 1rem 0;
-    color: var(--headerColor);
-    position: relative;
-}
-
-.cs-text {
-    font-size: var(--bodyFontSize);
-    line-height: 1.5em;
-    text-align: inherit;
-    width: 100%;
-    max-width: 40.625rem;
-    margin: 0;
-    color: var(--bodyTextColor);
-}
 /*-- -------------------------- -->
 <---          Footer            -->
 <--- -------------------------- -*/
@@ -1842,7 +1614,6 @@ body {
       z-index: -1;
     }
     #footer-1147 .cs-background:before {
-      /* background color overlay */
       content: '';
       position: absolute;
       display: block;
@@ -1860,7 +1631,6 @@ body {
       left: 0;
       height: 100%;
       width: 100%;
-      /* Makes img tag act as a background image */
       object-fit: cover;
     }
   }
@@ -1874,64 +1644,4 @@ body {
       flex-direction: row;
       justify-content: space-between;
     }
-  }
-  :root {
-    /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
-    --primary: #03ab97;
-    --primaryLight: #03ab97;
-    --secondary: #03ab97;
-    --secondaryLight: #03ab97;
-    --headerColor: #1a1a1a;
-    --bodyTextColor: #4e4b66;
-    --bodyTextColorWhite: #fafbfc;
-    /* 13px - 16px */
-    --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
-    /* 31px - 49px */
-    --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
-    --bodyFontSize: 1rem;
-    /* 60px - 100px top and bottom */
-    --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-}
-
-*, *:before, *:after {
-    /* prevents padding from affecting height and width */
-    box-sizing: border-box;
-}
-.cs-topper {
-    font-size: var(--topperFontSize);
-    line-height: 1.2em;
-    text-transform: uppercase;
-    text-align: inherit;
-    letter-spacing: .1em;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 0.25rem;
-    display: block;
-}
-
-.cs-title {
-    font-size: var(--headerFontSize);
-    font-weight: 900;
-    line-height: 1.2em;
-    text-align: inherit;
-    max-width: 43.75rem;
-    margin: 0 0 1rem 0;
-    color: var(--headerColor);
-    position: relative;
-}
-
-.cs-text {
-    font-size: var(--bodyFontSize);
-    line-height: 1.5em;
-    text-align: inherit;
-    width: 100%;
-    max-width: 40.625rem;
-    margin: 0;
-    color: var(--bodyTextColor);
-}
-                                                                                                                                                                                                                                                                                                                                                      
+  }                                                                                                                                                                                                                                                                                                                                                   
